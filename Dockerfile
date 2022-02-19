@@ -1,11 +1,12 @@
-FROM node:14-bullseye-slim
+FROM node:14
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+COPY package.json ./
 
+RUN npm i -g @nestjs/cli
 RUN npm install
 
 COPY . .
 
-CMD ["npm", "run", "start:dev"]
+CMD [ -d "node_modules" ] && npm run start:debug || npm install && npm run start:debug

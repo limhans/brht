@@ -3,11 +3,9 @@ version: '3.8'
 services:
   notify-api:
     container_name: briohr-notify-api
-    image: briohr-notify-api:1.0.0
     build:
       context: .
       dockerfile: ./Dockerfile
-    command: npm run start:dev
     ports:
       - 3000:3000
       - 9229:9229
@@ -15,7 +13,6 @@ services:
       - briohr-network
     volumes:
       - .:/usr/src/app
-      - /usr/src/app/node_modules
     restart: unless-stopped
   mongodb:
     image: mongo
