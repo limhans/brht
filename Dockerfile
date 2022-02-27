@@ -9,4 +9,4 @@ RUN npm install
 
 COPY . .
 
-CMD [ -d "node_modules" ] && npm run start:debug || npm install && npm run start:debug
+CMD [ -d "node_modules" ] && npm run start:dev || npm install && npm run start:dev

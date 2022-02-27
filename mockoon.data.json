@@ -1,0 +1,239 @@
+{
+    "source": "mockoon:1.16.0",
+    "data": [
+        {
+            "type": "environment",
+            "item": {
+                "uuid": "1606d857-1121-4ec1-842b-a67fe0cec951",
+                "lastMigration": 18,
+                "name": "BrioHR",
+                "endpointPrefix": "",
+                "latency": 0,
+                "port": 3003,
+                "hostname": "0.0.0.0",
+                "routes": [
+                    {
+                        "uuid": "4b6cb041-d890-41ce-9e26-a649da0a15a1",
+                        "documentation": "Returns one user by their user id",
+                        "method": "get",
+                        "endpoint": "user/:userId",
+                        "responses": [
+                            {
+                                "uuid": "a2a20f3d-b3c7-4fab-9c4d-ee394a030c8c",
+                                "body": "{\n  \"error\": true,\n  \"reason\": \"User not found\"\n}",
+                                "latency": 0,
+                                "statusCode": 404,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": false
+                            },
+                            {
+                                "uuid": "aa0e1e7e-4ae1-45a8-9ea1-45c8a04be991",
+                                "body": "{\n  \"userId\": 124,\n  \"firstName\": \"Peter\",\n  \"lastName\": \"Lustig\",\n  \"dob\": \"2000-01-01\",\n  \"email\": \"test@example.org\",\n  \"notificationChannels\": [\"email\"]\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "User Id 124 - No UI",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "params",
+                                        "modifier": "userId",
+                                        "value": "124",
+                                        "operator": "equals"
+                                    }
+                                ],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": false
+                            },
+                            {
+                                "uuid": "6bb7f8b4-631c-4fb8-8f02-47fc7b5b7e4b",
+                                "body": "{\n  \"userId\": 125,\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"dob\": \"1970-02-12\",\n  \"email\": \"test2@example.org\",\n  \"notificationChannels\": []\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "User Id 125 - No Notifications",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "params",
+                                        "modifier": "userId",
+                                        "value": "125",
+                                        "operator": "equals"
+                                    }
+                                ],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": false
+                            },
+                            {
+                                "uuid": "528b8bd2-42de-4bfe-9e23-e3667d2ad9f4",
+                                "body": "{\n  \"userId\": 126,\n  \"firstName\": \"Freya\",\n  \"lastName\": \"Mila\",\n  \"dob\": \"1977-04-22\",\n  \"email\": \"test3@example.org\",\n  \"notificationChannels\": [\"email\", \"ui\"]\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "User Id 126 - All Notifications",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "params",
+                                        "modifier": "userId",
+                                        "value": "126",
+                                        "operator": "equals"
+                                    }
+                                ],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": false
+                            },
+                            {
+                                "uuid": "606e11a9-170b-46f7-9687-1a45cc827bfb",
+                                "body": "{\n  \"error\": true,\n  \"reason\": \"UserId required\"\n}",
+                                "latency": 0,
+                                "statusCode": 400,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "params",
+                                        "modifier": "userId",
+                                        "value": "",
+                                        "operator": "null"
+                                    }
+                                ],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": true
+                            },
+                            {
+                                "uuid": "12d903dd-0b28-46e8-8999-970d57141d55",
+                                "body": "{\n  \"userId\": 123,\n  \"firstName\": \"Hans\",\n  \"lastName\": \"Roessler\",\n  \"dob\": \"1990-08-10\",\n  \"email\": \"test4@example.org\",\n  \"notificationChannels\": [\"ui\"]\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "User Id 123 - No Email",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "params",
+                                        "modifier": "userId",
+                                        "value": "123",
+                                        "operator": "equals"
+                                    }
+                                ],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": true
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "4a1dee78-0fa7-4c4f-8fc1-27a7979067af",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "company/:companyId",
+                        "responses": [
+                            {
+                                "uuid": "55b10bc2-12d6-4cee-bfda-94485b34acc6",
+                                "body": "{\n  \"error\": true,\n  \"reason\": \"Company not found\"\n}",
+                                "latency": 0,
+                                "statusCode": 404,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": false
+                            },
+                            {
+                                "uuid": "9ecd033b-4139-4648-8c15-b0f3c7d4b924",
+                                "body": "{\n  \"companyId\": 123,\n  \"companyName\": \"Test Ltd.\",\n  \"notificationChannels\": [\"email\", \"ui\"],\n  \"users\": [\n    123, 124  \n  ]\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "Company Id 123 - All Notifications",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "params",
+                                        "modifier": "companyId",
+                                        "value": "123",
+                                        "operator": "equals"
+                                    }
+                                ],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": false
+                            },
+                            {
+                                "uuid": "2e1d4af1-ea32-4c8d-9116-620f09301156",
+                                "body": "{\n  \"companyId\": 123,\n  \"companyName\": \"Testing GmbH\",\n  \"notificationChannels\": [],\n  \"users\": [\n    125, 126  \n  ]\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "Company Id 124 - No Notifications",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "params",
+                                        "modifier": "companyId",
+                                        "value": "124",
+                                        "operator": "equals"
+                                    }
+                                ],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    }
+                ],
+                "proxyMode": false,
+                "proxyHost": "",
+                "proxyRemovePrefix": false,
+                "https": false,
+                "cors": true,
+                "headers": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "proxyReqHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ],
+                "proxyResHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ]
+            }
+        }
+    ]
+}
