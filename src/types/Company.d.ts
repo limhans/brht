@@ -1,8 +1,8 @@
-import { NotificationChannel } from "../models/notification.model";
+import { NotificationChannel } from '../models/notification.model';
 
 export type Company = {
-    companyId: number;
-    companyName: string;
-    notificationChannels: NotificationChannel[];
-    users: number[];
-}
+  companyId: number;
+  companyName: string;
+  notificationChannels: NotificationChannel[];
+  users: number[];
+};

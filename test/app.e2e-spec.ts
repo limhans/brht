@@ -15,10 +15,22 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/ (GET)', () => {
+  it('should be able to retrieve a ui notification, after creating it', async () => {
+    const notificationPayload = {
+      companyId: 123,
+      userId: 123,
+      type: 'leave-balance-reminder',
+    };
+
+    await request(app.getHttpServer())
+      .post('/')
+      .send(notificationPayload)
+      .expect(201)
+      .expect({ success: true });
+
     return request(app.getHttpServer())
-      .get('/')
+      .get('/ui/123')
       .expect(200)
-      .expect('Hello World!');
+      .expect((res) => expect(res.body.length).toBeGreaterThanOrEqual(1));
   });
 });
